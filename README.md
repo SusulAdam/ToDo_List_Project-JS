@@ -2,6 +2,18 @@
 The repository contains to do list project.
 Project consist on add, edit and delete new tasks. 
 Project don't have data base.
+
+## Running
+
+Install dependencies first:
+```shell script
+npm install
+```
+
+Then run the application:
+```shell script
+npm start
+```
 	
 ## Technologies
 Projects are created with:
@@ -9,3 +21,8 @@ Projects are created with:
 * CSS3
 * JS
 * SCSS
+
+
+## Webpack
+
+I used minimalist boilerplate webpack and modified it to suit my needs
