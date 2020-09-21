@@ -15,9 +15,9 @@
     font-family: 'Open Sans', sans-serif;
     overflow: hidden;
     background-repeat: no-repeat;
-    background-position: 0 23%;
-    background-size: cover;
-    filter: blur(0px);
+    background-position: center 20%;
+
+
 
     .todo__overlayer {
         position: absolute;
@@ -58,7 +58,7 @@
                 width: 500px;
                 height: 40px;
                 border-radius: 5px;
-                padding: 17px 0;
+                padding: 17px 0 17px 10px;
                 outline: none;
                 border: none;
                 margin: 30px 0 30px 0;
@@ -75,7 +75,7 @@
                 background-color: #ffffff;
 
                 &:hover {
-                    color: #ffffff;
+                    background-color: darken(#ffffff, 15%);
                     transition: 0.3s;
                 }
             }
@@ -85,8 +85,6 @@
             margin-top: 10px;
             padding: 20px 0px 0 0px;
             margin-bottom: 50px;
-
-
 
 
             .todo-list__info {
@@ -105,9 +103,6 @@
                 padding: 10px 10px 150px 10px;
                 margin-left: 50px;
 
-
-
-
                 li {
                     display: flex;
                     justify-content: space-between;
@@ -119,7 +114,6 @@
                     margin-right: 50px;
                     background-image: url('../images/pinPaper.png');
                     position: relative;
-
 
                     .todo-list__tools {
                         display: flex;

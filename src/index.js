@@ -12,6 +12,7 @@ let $popupInput;
 let $addPopupBtn;
 let $closeTodoBtn;
 let $idNumber = 0;
+let $todoTemplete;
 let $allTasks;
 
 
@@ -31,6 +32,7 @@ const prepareDOMElements = () => {
     $popupInput = document.querySelector('.todo-popup__input');
     $addPopupBtn = document.querySelector('.todo-popup__control--accept');
     $closeTodoBtn = document.querySelector('.todo-popup__control--cancel');
+    $todoTemplete = document.querySelector('.todo');
     $allTasks = $ulList.getElementsByTagName('li');
 
 }
@@ -50,7 +52,13 @@ const enterChceck = () => {
 }
 
 const addNewTask = () => {
-    if ($todoInput.value !== '') {
+    if ($todoInput.value.length > 350) {
+        $alertInfo.innerText = "Too many characters, please limited to 350";
+        $alertInfo.style.color = 'red';
+    } else if ($todoInput.value === '') {
+        $alertInfo.innerText = "Enter the content of task!"
+        $alertInfo.style.color = 'red';
+    } else {
         $idNumber++;
         $newTask = document.createElement('li');
         // $newTask = document.classList.add('squere')
@@ -59,9 +67,7 @@ const addNewTask = () => {
         $ulList.appendChild($newTask);
         $todoInput.value = ""
         $alertInfo.innerText = ""
-        createToolsArea()
-    } else {
-        $alertInfo.innerText = "Enter the content of task!"
+        createToolsArea();
     }
 }
 
@@ -123,6 +129,7 @@ const editTask = (e) => {
     $editedTodo = document.getElementById(oldTodo);
     $popupInput.value = $editedTodo.firstChild.textContent;
     $popup.style.display = 'flex';
+    $todoTemplete.style.filter = "blur(5px)";
 }
 
 const changeTodo = () => {
@@ -130,14 +137,18 @@ const changeTodo = () => {
         $editedTodo.firstChild.textContent = $popupInput.value
         $popup.style.display = 'none';
         $popupinfo.innerText = ""
+        $todoTemplete.style.filter = "blur(0px)";
     } else {
-        $popupinfo.innerText = 'You need to write content!'
+        $popupinfo.innerText = 'You need to a write content!'
+        $popupinfo.style.color = 'red'
+        $popupinfo.style.fontWeight = 'bold'
     }
 }
 
 const closePopup = () => {
     $popup.style.display = 'none';
     $popupinfo.innerText = ""
+    $todoTemplete.style.filter = "blur(0px)";
 }
 
 const deleteTask = (e) => {
