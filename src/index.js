@@ -14,6 +14,8 @@ let $closeTodoBtn;
 let $idNumber = 0;
 let $todoTemplete;
 let $allTasks;
+let $deleteAllControl;
+let $addDate;
 
 
 const main = () => {
@@ -34,6 +36,8 @@ const prepareDOMElements = () => {
     $closeTodoBtn = document.querySelector('.todo-popup__control--cancel');
     $todoTemplete = document.querySelector('.todo');
     $allTasks = $ulList.getElementsByTagName('li');
+    $deleteAllControl = document.querySelector('.todo-content__deleteAllControl');
+    $addDate = document.querySelector('.todo-content__addDate');
 
 }
 
@@ -43,6 +47,7 @@ const prepareDOMEvents = () => {
     $closeTodoBtn.addEventListener('click', closePopup);
     $addPopupBtn.addEventListener('click', changeTodo);
     $todoInput.addEventListener('keyup', enterChceck)
+    $deleteAllControl.addEventListener('click', deleteAllTask)
 }
 
 const enterChceck = () => {
@@ -65,9 +70,10 @@ const addNewTask = () => {
         $newTask.innerText = $todoInput.value;
         $newTask.setAttribute('id', `todo-${$idNumber}`)
         $ulList.appendChild($newTask);
-        $todoInput.value = ""
-        $alertInfo.innerText = ""
+        $todoInput.value = "";
+        $alertInfo.innerText = "";
         createToolsArea();
+        $addDate.value = "";
     }
 }
 
@@ -78,21 +84,25 @@ const createToolsArea = () => {
     toolsPanel.classList.add('todo-list__tools');
     $newTask.appendChild(toolsPanel)
 
-    const todoDate = document.createElement('span');
-    todoDate.classList.add('todo-element-bar');
-    const date = new Date();
+    // const todoDate = document.createElement('span');
+    // todoDate.classList.add('todo-element-bar');
+    // const date = new Date();
 
-    function leadingZeroMounth(i) {
-        return (i < 9) ? "0" + (i + 1) : i;
-    }
+    // function leadingZeroMounth(i) {
+    //     return (i < 9) ? "0" + (i + 1) : i;
+    // }
 
-    function leadingZeroMinutesHours(i) {
-        return (i < 10) ? "0" + i : i;
-    }
-    const dateText = date.getDate() + '-' + leadingZeroMounth(date.getMonth()) + '-' + date.getFullYear() + ' godz.: '
-        + leadingZeroMinutesHours(date.getHours()) + ':' + leadingZeroMinutesHours(date.getMinutes());
-    todoDate.innerText = dateText;
-    toolsPanel.appendChild(todoDate);
+    // function leadingZeroMinutesHours(i) {
+    //     return (i < 10) ? "0" + i : i;
+    // }
+    // const dateText = date.getDate() + '-' + leadingZeroMounth(date.getMonth()) + '-' + date.getFullYear() + ' godz.: '
+    //     + leadingZeroMinutesHours(date.getHours()) + ':' + leadingZeroMinutesHours(date.getMinutes());
+    // todoDate.innerText = dateText;
+    // toolsPanel.appendChild(todoDate);
+
+    const toDoDate = document.createElement('span');
+    toDoDate.innerText = $addDate.value
+    toolsPanel.appendChild(toDoDate);
 
 
     const completeBtn = document.createElement('button');
@@ -159,7 +169,11 @@ const deleteTask = (e) => {
         $alertInfo.innerText = 'There are no tasks in the list.';
 
     }
+}
 
+
+const deleteAllTask = () => {
+    $ulList.innerHTML = ''
 }
 
 document.addEventListener('DOMContentLoaded', main)

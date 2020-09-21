@@ -64,12 +64,17 @@
                 margin: 30px 0 30px 0;
             }
 
-            .todo-content__addControl {
+            .todo-content__addDate {
+                height: 40px;
+                outline: none;
+                border: none;
+                border-radius: 5px;
+            }
+
+            .todo-content__addControl,
+            .todo-content__deleteAllControl {
                 height: 40px;
                 width: 60px;
-
-                outline: none;
-                cursor: pointer;
                 border-radius: 5px;
                 transition: 0.3s;
                 background-color: #ffffff;
@@ -78,6 +83,10 @@
                     background-color: darken(#ffffff, 15%);
                     transition: 0.3s;
                 }
+            }
+
+            .todo-content__deleteAllControl {
+                width: 80px;
             }
         }
 
@@ -119,7 +128,7 @@
                         display: flex;
                         outline: none;
                         position: absolute;
-                        left: 50%;
+                        left: 60%;
                         transform: translateX(-50%);
                         bottom: 5%;
 
@@ -182,16 +191,12 @@
             display: inline-block;
             padding: 10px 22px;
             margin: 20px;
-            border: none;
             border-radius: 5px;
             color: black;
             background-color: #196f7e;
             text-transform: uppercase;
-            cursor: pointer;
-            transition: color .3s, background-color .3s;
             font-family: $headerFont;
             font-weight: bold;
-
 
             &:hover {
                 color: #fff;
@@ -207,11 +212,12 @@ button {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    transition: background-color .3s;
+    transition: color .3s, background-color .3s;
     outline: none;
 
     &:hover {
-        background-color: #41c420
+        background-color: darken(#ffffff, 15%);
+
     }
 
 }
@@ -219,6 +225,7 @@ button {
 span {
     padding: 15px 10px;
     font-size: 13.3px;
+    width: 100px;
 }
 
 .todo__complete {
