@@ -1,6 +1,6 @@
 ## General info
 The repository contains to do list project.
-Project consist on add, edit and delete new tasks. 
+Project consist on add, edit and delete new tasks.
 Project don't have data base.
 
 ## Running
@@ -14,7 +14,7 @@ Then run the application:
 ```shell script
 npm start
 ```
-	
+
 ## Technologies
 Projects are created with:
 * HTLM5
@@ -25,4 +25,4 @@ Projects are created with:
 
 ## Webpack
 
-I used minimalist boilerplate webpack and modified it to suit my needs
+I used boilerplate webpack and modified it to suit my needs

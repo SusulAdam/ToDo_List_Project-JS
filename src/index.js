@@ -1,4 +1,4 @@
-import '../sass/style.scss';
+import './styles/index.scss'
 
 let $todoInput;
 let $alertInfo;
@@ -30,7 +30,7 @@ const prepareDOMElements = () => {
     $popupinfo = document.querySelector('.todo-popup__main-info');
     $popupInput = document.querySelector('.todo-popup__input');
     $addPopupBtn = document.querySelector('.todo-popup__control--accept');
-    $closeTodoBtn = document.querySelector('.todo-popup__control-cancel');
+    $closeTodoBtn = document.querySelector('.todo-popup__control--cancel');
     $allTasks = $ulList.getElementsByTagName('li');
 
 }
@@ -53,6 +53,7 @@ const addNewTask = () => {
     if ($todoInput.value !== '') {
         $idNumber++;
         $newTask = document.createElement('li');
+        // $newTask = document.classList.add('squere')
         $newTask.innerText = $todoInput.value;
         $newTask.setAttribute('id', `todo-${$idNumber}`)
         $ulList.appendChild($newTask);
@@ -68,7 +69,7 @@ const addNewTask = () => {
 
 const createToolsArea = () => {
     const toolsPanel = document.createElement('div');
-    toolsPanel.classList.add('todo__tool');
+    toolsPanel.classList.add('todo-list__tools');
     $newTask.appendChild(toolsPanel)
 
     const todoDate = document.createElement('span');
@@ -82,7 +83,6 @@ const createToolsArea = () => {
     function leadingZeroMinutesHours(i) {
         return (i < 10) ? "0" + i : i;
     }
-
     const dateText = date.getDate() + '-' + leadingZeroMounth(date.getMonth()) + '-' + date.getFullYear() + ' godz.: '
         + leadingZeroMinutesHours(date.getHours()) + ':' + leadingZeroMinutesHours(date.getMinutes());
     todoDate.innerText = dateText;

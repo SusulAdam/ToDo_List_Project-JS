@@ -10,8 +10,8 @@
     display: flex;
     justify-content: center;
     height: 100vh;
-    background-color: #f8ef42;
-    background-image: linear-gradient(315deg, #f8ef42 0%, #0fd64f 74%);
+    z-index: 100;
+    background-image: url('../public/images/todoListBackground.jpg');
     flex-direction: column;
     position: relative;
     width: 100%;
@@ -26,10 +26,11 @@
         width: 800px;
         text-align: center;
 
+
+
         .todo-content {
             background-color: #fbb034;
-            background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
-
+            background-image: url('../public/images/todoListBackground.jpg');
             border-radius: 50px;
 
             .todo-content__header {
