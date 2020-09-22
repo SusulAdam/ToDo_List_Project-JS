@@ -22,10 +22,10 @@
         <p class="todo-content__information">
           Planning has never been so easy </p>
         <input type="text" class="todo-content__input" placeholder="Enter the content of the task">
-        <input type="date" class="todo-content__addDate" placeholder="Enter the content of the task">
+        <input type="date" class="todo-content__addDate">
 
         <button class="todo-content__addControl">Add</button>
-        <button class="todo-content__deleteAllControl">DeleteAll</button>
+        <button class="todo-content__deleteAllControl">Delete all</button>
 
       </header>
 
@@ -95,25 +95,20 @@
 
           </ul>
         </div>
-
-
-
       </div>
     </div>
-
-
   </section>
 
   <section class="todo-popup">
     <h3 class="todo-popup__h3">Edit the task:</h3>
     <div class="todo-popup__container">
       <div class="todo-popup__main-info"></div>
-      <input type="text" class="todo-popup__input" placeholder="Enter new task content:">
+      <input type="text" class="todo-popup__taskInput" placeholder="Enter new task content:">
+      <input type="date" class="todo-popup__dateInput">
+
       <button class="todo-popup__control todo-popup__control--accept">Submit</button>
       <button class="todo-popup__control todo-popup__control--cancel">Cancel</button>
-
     </div>
-
   </section>
 
 </body>

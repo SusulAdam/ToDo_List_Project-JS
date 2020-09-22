@@ -16,13 +16,13 @@ let $todoTemplete;
 let $allTasks;
 let $deleteAllControl;
 let $addDate;
+let $popupDate;
 
 
 const main = () => {
     prepareDOMElements();
     prepareDOMEvents();
 }
-
 
 const prepareDOMElements = () => {
     $todoInput = document.querySelector('.todo-content__input');
@@ -31,14 +31,14 @@ const prepareDOMElements = () => {
     $ulList = document.querySelector('.todo-list Ul');
     $popup = document.querySelector('.todo-popup');
     $popupinfo = document.querySelector('.todo-popup__main-info');
-    $popupInput = document.querySelector('.todo-popup__input');
+    $popupInput = document.querySelector('.todo-popup__taskInput');
     $addPopupBtn = document.querySelector('.todo-popup__control--accept');
     $closeTodoBtn = document.querySelector('.todo-popup__control--cancel');
     $todoTemplete = document.querySelector('.todo');
     $allTasks = $ulList.getElementsByTagName('li');
     $deleteAllControl = document.querySelector('.todo-content__deleteAllControl');
     $addDate = document.querySelector('.todo-content__addDate');
-
+    $popupDate = document.querySelector('.todo-popup__dateInput');
 }
 
 const prepareDOMEvents = () => {
@@ -46,13 +46,13 @@ const prepareDOMEvents = () => {
     $ulList.addEventListener('click', checkClick);
     $closeTodoBtn.addEventListener('click', closePopup);
     $addPopupBtn.addEventListener('click', changeTodo);
-    $todoInput.addEventListener('keyup', enterChceck)
-    $deleteAllControl.addEventListener('click', deleteAllTask)
+    $todoInput.addEventListener('keyup', enterChceck);
+    $deleteAllControl.addEventListener('click', deleteAllTask);
 }
 
 const enterChceck = () => {
     if (event.keyCode === 13) {
-        addNewTask()
+        addNewTask();
     }
 }
 
@@ -61,14 +61,13 @@ const addNewTask = () => {
         $alertInfo.innerText = "Too many characters, please limited to 350";
         $alertInfo.style.color = 'red';
     } else if ($todoInput.value === '') {
-        $alertInfo.innerText = "Enter the content of task!"
+        $alertInfo.innerText = "Enter the content of task!";
         $alertInfo.style.color = 'red';
     } else {
         $idNumber++;
         $newTask = document.createElement('li');
-        // $newTask = document.classList.add('squere')
         $newTask.innerText = $todoInput.value;
-        $newTask.setAttribute('id', `todo-${$idNumber}`)
+        $newTask.setAttribute('id', `todo-${$idNumber}`);
         $ulList.appendChild($newTask);
         $todoInput.value = "";
         $alertInfo.innerText = "";
@@ -78,32 +77,15 @@ const addNewTask = () => {
 }
 
 
-
 const createToolsArea = () => {
     const toolsPanel = document.createElement('div');
     toolsPanel.classList.add('todo-list__tools');
     $newTask.appendChild(toolsPanel)
 
-    // const todoDate = document.createElement('span');
-    // todoDate.classList.add('todo-element-bar');
-    // const date = new Date();
-
-    // function leadingZeroMounth(i) {
-    //     return (i < 9) ? "0" + (i + 1) : i;
-    // }
-
-    // function leadingZeroMinutesHours(i) {
-    //     return (i < 10) ? "0" + i : i;
-    // }
-    // const dateText = date.getDate() + '-' + leadingZeroMounth(date.getMonth()) + '-' + date.getFullYear() + ' godz.: '
-    //     + leadingZeroMinutesHours(date.getHours()) + ':' + leadingZeroMinutesHours(date.getMinutes());
-    // todoDate.innerText = dateText;
-    // toolsPanel.appendChild(todoDate);
-
     const toDoDate = document.createElement('span');
+    toDoDate.classList.add('todo__date')
     toDoDate.innerText = $addDate.value
     toolsPanel.appendChild(toDoDate);
-
 
     const completeBtn = document.createElement('button');
     completeBtn.classList.add('todo__complete');
@@ -119,8 +101,6 @@ const createToolsArea = () => {
     deleteBtn.classList.add('todo__delete');
     deleteBtn.innerHTML = '<i class="fas fa-times"></i>';
     toolsPanel.appendChild(deleteBtn);
-
-
 }
 
 const checkClick = (e) => {
@@ -138,6 +118,7 @@ const editTask = (e) => {
     const oldTodo = e.target.closest('li').id
     $editedTodo = document.getElementById(oldTodo);
     $popupInput.value = $editedTodo.firstChild.textContent;
+    $popupDate.value = $editedTodo.childNodes[1].childNodes[0].firstChild.textContent;
     $popup.style.display = 'flex';
     $todoTemplete.style.filter = "blur(5px)";
 }
@@ -145,6 +126,7 @@ const editTask = (e) => {
 const changeTodo = () => {
     if ($popupInput.value !== '') {
         $editedTodo.firstChild.textContent = $popupInput.value
+        $editedTodo.childNodes[1].childNodes[0].firstChild.textContent = $popupDate.value;
         $popup.style.display = 'none';
         $popupinfo.innerText = ""
         $todoTemplete.style.filter = "blur(0px)";
@@ -167,10 +149,8 @@ const deleteTask = (e) => {
     console.log()
     if ($allTasks.length == 0) {
         $alertInfo.innerText = 'There are no tasks in the list.';
-
     }
 }
-
 
 const deleteAllTask = () => {
     $ulList.innerHTML = ''
