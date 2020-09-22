@@ -1,5 +1,5 @@
 {
-  "name": "webpack-boilerplate",
+  "name": "to-do-list",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,8 +11,6 @@
   "keywords": [
     "webpack",
     "webpack 4",
-    "webpack boilerplate",
-    "boilerplate",
     "hmr"
   ],
   "devDependencies": {

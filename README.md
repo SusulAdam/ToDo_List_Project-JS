@@ -1,6 +1,7 @@
 ## General info
 The repository contains to do list project.
 Project consist on add, edit and delete new tasks.
+The projecy includes the possiblity of adding and editing a task execution.
 Project don't have data base.
 
 ## Running
