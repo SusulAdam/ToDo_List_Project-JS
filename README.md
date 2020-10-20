@@ -7,7 +7,7 @@ Project don't have data base.
 
 ## Running
 
-You can follow the link: [to-do-project.netlify.app](to-do-project.netlify.app)
+You can follow the link: [https://to-do-project.netlify.app](https://to-do-project.netlify.app)
 
 or
 
