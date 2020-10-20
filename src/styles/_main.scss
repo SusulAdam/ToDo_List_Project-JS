@@ -218,10 +218,18 @@
     z-index: 100;
     font-family: $headerFont;
 
+    @media(max-width:600px) {
+        width: 350px;
+    }
+
     .todo-popup__h3 {
         color: $mainColor;
         padding: 20px;
         font-size: 44px;
+
+        @media(max-width:600px) {
+            font-size: 38px;
+        }
     }
 
     .todo-popup__container {
@@ -230,6 +238,8 @@
         flex-wrap: wrap;
         width: 90%;
         padding: 10px;
+
+
 
         .todo-popup__taskInput,
         .todo-popup__dateInput {
@@ -244,11 +254,23 @@
             width: 360px;
             margin-right: 10px;
             padding: 0 20px;
+
+
+            @media(max-width:600px) {
+                width: 270px;
+                margin-bottom: 5px;
+            }
         }
 
         .todo-popup__dateInput {
             width: 150px;
             padding-left: 5px;
+
+            @media(max-width:600px) {
+                margin-right: 128px;
+                margin-bottom: 10px;
+                width: 150px;
+            }
         }
 
         .todo-popup__control {
@@ -262,6 +284,13 @@
             text-transform: uppercase;
             font-family: $headerFont;
             font-weight: bold;
+
+            @media(max-width:600px) {
+                width: 20%;
+                margin: 0 1px;
+                font-size: 10px;
+                padding: 10px 5px;
+            }
 
             &:hover {
                 color: #fff;
